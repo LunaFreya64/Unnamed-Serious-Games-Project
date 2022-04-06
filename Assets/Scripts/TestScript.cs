@@ -7,6 +7,7 @@ public class TestScript : MonoBehaviour
     // Start is called before the first frame update
 
 public float day;
+public float timeOfDay;
 public float mentalHealth;
 public float riskLevel = 0;
 public float whichbutton = 0;
@@ -26,6 +27,9 @@ public float lastButton;
         switch (day)
         {
             case 1:
+            switch (timeOfDay)
+            {
+                case 1:
                 switch (whichbutton)
                 {
                     case 1:
@@ -44,6 +48,12 @@ public float lastButton;
                     promptText.text = "Hello and welcome to the first day!\nthis is not real text";
                     break;
                 }
+                break;
+
+                default:
+                promptText.text = "This text means that the time of day does not exist";
+                break;
+            }
                 break;
             default:
                 promptText.text = "You somehow reached the end\nof the universe, how did you get\nhere?";
