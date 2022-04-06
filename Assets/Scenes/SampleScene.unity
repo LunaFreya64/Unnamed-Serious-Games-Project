@@ -702,6 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   day: 1
+  timeOfDay: 1
   mentalHealth: 0
   riskLevel: 0
   whichbutton: 0
