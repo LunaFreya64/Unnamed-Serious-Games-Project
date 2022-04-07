@@ -22,7 +22,14 @@ public class Button1Script : MonoBehaviour
     public void buttonclicked()
     {
         // return which button has been clicked
-        GameManager.whichbutton = thisButtonNumber;
+
+        if (thisButtonNumber == 4)
+        {
+            GameManager.MoveTimeForward();
+        }else
+        {
+            GameManager.whichbutton = thisButtonNumber;   
+        }
        // GameManager.riskLevel += 50;
     }
 }

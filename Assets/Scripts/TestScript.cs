@@ -53,6 +53,10 @@ public float lastButton;
                 default:
                 promptText.text = "This text means that the time of day does not exist";
                 break;
+
+                case 2:
+                promptText.text = "You arrive at your school. It's a massive,\nintimidating building that you're sure to get lost in.\nStudents are all flooding inside to start the day,\nand you're no different. You slink inside, following\nthe crowd...";
+                break;
             }
                 break;
             default:
@@ -61,17 +65,23 @@ public float lastButton;
         }
     }
 
-    IEnumerator MoveTimeForward()
+    public void MoveTimeForward()
     {
-        yield return new WaitForSeconds(5);
-        timeOfDay += 1;
-    }
-
-    IEnumerator StartSequence()
-    {
-        TextMesh promptText = GameObject.Find("Prompt Text").GetComponent<TextMesh>();
-        yield return new WaitForSeconds(5);
-        promptText.text = "You are a 14 year old transgender girl, assigned male at birth. No one knows, except for one or two close friends that you trust. You don’t want anyone else to know you are transgender yet. You want to ease them into it slowly, so as not to freak out or risk your own health and safety.";
-        Debug.Log("it should end here");
+        if (whichbutton == 1)
+        {
+            riskLevel += 25;
+            mentalHealth += 25;
+            timeOfDay += 1;
+        }else if (whichbutton == 2)
+        {
+            riskLevel -= 25;
+            mentalHealth -= 25;
+            timeOfDay += 1;
+        }else if (whichbutton == 3)
+        {
+            mentalHealth -= 15;
+            timeOfDay += 1;
+        }
+        whichbutton = 0;
     }
 }
