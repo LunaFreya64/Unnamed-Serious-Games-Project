@@ -27,7 +27,7 @@ public class WelcomeScript : MonoBehaviour
             break;
 
             case 2:
-            welcomePromt.text = "You have to make your way through the\nweek, balancing both your mental health\nand safety. Too much Risk, and you\nmight get found out by your family.\nToo low health levels, and you could\nwind up in a hospital.";
+            welcomePromt.text = "You have to make your way through the\nweek, balancing both your mental health\nand safety. Too much Risk, and you\nmight get found out by your family.\nToo low health levels, and you might\nbecome too overwhelmed and dysphoric\nto continue";
             break;
             
             default:
