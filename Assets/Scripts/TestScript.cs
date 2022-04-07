@@ -11,7 +11,6 @@ public float timeOfDay;
 public float mentalHealth;
 public float riskLevel = 0;
 public float whichbutton = 0;
-public float lastButton;
 
     void Start()
     {
