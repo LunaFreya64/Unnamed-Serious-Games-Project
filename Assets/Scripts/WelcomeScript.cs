@@ -18,14 +18,18 @@ public class WelcomeScript : MonoBehaviour
 
         switch (prevOrNext)
         {
+            case 0:
+            welcomePromt.text = "You wake up on a bright Monday\nmorning. It is the first day of your\nfreshman year\nat Dwight D. Eisenhower High\nSchool.";
+            break;
+
             case 1:
-            welcomePromt.text = "test1";
+            welcomePromt.text = "You are a 14 year old transgender\ngirl, assigned male at birth.\nNo one knows, except for one or\ntwo close friends that you trust.\nYou do not want anyone else to\nknow you are transgender yet.\nYou want to ease them into it slowly,\nso as not to freak out or risk your own\nhealth and safety.";
             break;
 
             case 2:
-            welcomePromt.text = "test2";
+            welcomePromt.text = "You have to make your way through the\nweek, balancing both your mental health\nand safety. Too much Risk, and you\nmight get found out by your family.\nToo low health levels, and you could\nwind up in a hospital.";
             break;
-
+            
             default:
             welcomePromt.text = "end of text";
             break;

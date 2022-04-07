@@ -33,19 +33,19 @@ public float lastButton;
                 switch (whichbutton)
                 {
                     case 1:
-                    promptText.text = "You are a 14 year old transgender\ngirl, assigned male at birth.\nNo one knows, except for one or\ntwo close friends that you trust.\nYou do not want anyone else to know you are transgender yet.\nYou want to ease them into it slowly,\nso as not to freak out or risk your own health and safety.";
+                    promptText.text = "You build up the courage to wear something that\nfits you a little more comfortably.\nYou already feel better.\nLet's just hope no one stares...";
                     break;
 
                     case 2:
-                    promptText.text = "you pressed button 2!\nHooray!";
+                    promptText.text = "You slink into some cargo shorts and a\nbutton-up shirt.\nThis is terrible. You feel terrible.\nBut at least it's safe.";
                     break;
 
                     case 3:
-                    promptText.text = "you pressed button 3!\nHooray!";
+                    promptText.text = "You slide into the ol' reliable hoodie/sweatpants\ncombo.It's not terrible, but you wish it could be a\nlittle better.";
                     break;
 
                     default:
-                    promptText.text = "You wake up on a bright Monday\nmorning. It is the first day of your\nfreshman year\nat Dwight D. Eisenhower High\nSchool. ";
+                    promptText.text = "You get out of bed and stare blankly at your\ncloset.\nWhat are you wearing today?\n\n1.Maybe a little bit feminine...?\n2.Force yourself into masculine-looking clothes.\n3.Inconspicuous hoodie & sweatpants combo.";
                     break;
                 }
                 break;

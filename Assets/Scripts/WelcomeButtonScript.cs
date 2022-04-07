@@ -22,13 +22,13 @@ public class WelcomeButtonScript : MonoBehaviour
     {
         if (welcomebuttonnumber == 0)
         {
-            if (WelcomeWindow.prevOrNext > -1)
+            if (WelcomeWindow.prevOrNext > 0)
             {
                 WelcomeWindow.prevOrNext -= 1;
             }
         } else
         {
-            if (WelcomeWindow.prevOrNext < 4)
+            if (WelcomeWindow.prevOrNext < 3)
             {
                 WelcomeWindow.prevOrNext +=1;
             }
