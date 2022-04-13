@@ -853,7 +853,6 @@ MonoBehaviour:
   mentalHealth: 0
   riskLevel: 0
   whichbutton: 0
-  lastButton: 0
 --- !u!4 &183883745
 Transform:
   m_ObjectHideFlags: 0
@@ -1000,7 +999,7 @@ GameObject:
   - component: {fileID: 507041587}
   - component: {fileID: 507041586}
   m_Layer: 0
-  m_Name: window
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

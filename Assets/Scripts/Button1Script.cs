@@ -7,10 +7,12 @@ public class Button1Script : MonoBehaviour
     // Start is called before the first frame update
     private TestScript GameManager;
     public float thisButtonNumber = 1;
+    private AudioSource source;
     void Start()
     {
         // Get reference to GameController Script
         GameManager = GameObject.Find("GameController").GetComponent<TestScript>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,8 @@ public class Button1Script : MonoBehaviour
         {
             GameManager.whichbutton = thisButtonNumber;   
         }
-       // GameManager.riskLevel += 50;
+        // GameManager.riskLevel += 50;
+
+        source.Play();
     }
 }

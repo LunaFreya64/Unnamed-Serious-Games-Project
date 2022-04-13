@@ -7,9 +7,11 @@ public class WelcomeButtonScript : MonoBehaviour
     // Start is called before the first frame update
     public float welcomebuttonnumber;
     private WelcomeScript WelcomeWindow;
+    private AudioSource source;
     void Start()
     {
         WelcomeWindow = GameObject.Find("Welcome Window").GetComponent<WelcomeScript>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,5 +35,6 @@ public class WelcomeButtonScript : MonoBehaviour
                 WelcomeWindow.prevOrNext +=1;
             }
         }
+        source.Play();
     }
 }
