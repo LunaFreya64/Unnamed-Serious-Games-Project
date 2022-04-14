@@ -11,6 +11,10 @@ public float timeOfDay;
 public float mentalHealth;
 public float riskLevel = 0;
 public float whichbutton = 0;
+public float randomInClassScenario;
+public bool thirdchoice = true;
+public bool timeTransition = false;
+public bool inClass;
 
     void Start()
     {
@@ -49,37 +53,74 @@ public float whichbutton = 0;
                 }
                 break;
 
-                default:
-                promptText.text = "This text means that the time of day does not exist";
+                case 2:
+                promptText.text = "You arrive at your school. It's a massive,\nintimidating building that you're sure to get lost in.\nStudents are all flooding inside to start the day,\nand you're no different. You slink inside, following\nthe crowd...\n\nPress -> to move on";
+                timeTransition = true;
                 break;
 
-                case 2:
-                promptText.text = "You arrive at your school. It's a massive,\nintimidating building that you're sure to get lost in.\nStudents are all flooding inside to start the day,\nand you're no different. You slink inside, following\nthe crowd...\n\nEND OF DEMO";
+                case 3:
+                switch (whichbutton)
+                {
+                    case 1:
+                    inClass = true;
+                    break;
+
+                    case 2:
+                    inClass = false;
+                    break;
+
+                    default:
+                    promptText.text = "Staring at your schedule, you have English first.\n1.Go to class\n2.Skip class";
+                    timeTransition = true;
+                    break;
+                }
+                thirdchoice = false;
                 break;
-            }
+
+                case 4:
+                promptText.text = "oh my god how do I code this?";
                 break;
+
             default:
-                promptText.text = "You somehow broke time and space";
-                break;
+            if (inClass == true)
+            {
+                promptText.text = "testing something";
+            }
+            break;
         }
+        break;
+
+        default:
+            promptText.text = "you somehow got outside time and space";
+            break;
+        }
+    }
+
+    public void RandomizeInClassScenario()
+    {
+        randomInClassScenario = Random.Range(0,1);
     }
 
     public void MoveTimeForward()
     {
-        if (whichbutton == 1)
+        if (whichbutton == 1 && timeTransition == false)
         {
             riskLevel += 25;
             mentalHealth += 25;
             timeOfDay += 1;
-        }else if (whichbutton == 2)
+        }else if (whichbutton == 2 && timeTransition == false)
         {
             riskLevel -= 25;
             mentalHealth -= 25;
             timeOfDay += 1;
-        }else if (whichbutton == 3)
+        }else if (whichbutton == 3 && thirdchoice == true && timeTransition == false)
         {
             mentalHealth -= 15;
             timeOfDay += 1;
+        }else if (timeTransition == true)
+        {
+            timeOfDay += 1;
+            timeTransition = false;
         }
         whichbutton = 0;
     }
