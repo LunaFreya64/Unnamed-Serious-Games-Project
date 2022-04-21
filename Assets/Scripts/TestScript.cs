@@ -8,6 +8,7 @@ public class TestScript : MonoBehaviour
 
 public float day;
 public float timeOfDay;
+public float tempTimeOfDay;
 public float mentalHealth;
 public float riskLevel = 0;
 public float whichbutton = 0;
@@ -15,6 +16,7 @@ public float randomInClassScenario;
 public bool thirdchoice = true;
 public bool timeTransition = false;
 public bool inClass;
+public bool randomScenarioEvent = false;
 
     void Start()
     {
@@ -71,7 +73,9 @@ public bool inClass;
 
                     default:
                     promptText.text = "Staring at your schedule, you have English first.\n1.Go to class\n2.Skip class";
+                    tempTimeOfDay = timeOfDay;
                     timeTransition = true;
+                    randomScenarioEvent = true;
                     break;
                 }
                 thirdchoice = false;
@@ -84,7 +88,20 @@ public bool inClass;
             default:
             if (inClass == true)
             {
-                promptText.text = "testing something";
+                switch (randomInClassScenario)
+                {
+                    case 0:
+                    promptText.text = "inclassscenario1";
+                    break;
+
+                    case 1:
+                    promptText.text = "inclassscenario2";
+                    break;
+                    
+                    default:
+                    promptText.text = "scenarionotrandomizedcorrectly";
+                    break;
+                }
             }
             break;
         }
@@ -96,10 +113,6 @@ public bool inClass;
         }
     }
 
-    public void RandomizeInClassScenario()
-    {
-        randomInClassScenario = Random.Range(0,1);
-    }
 
     public void MoveTimeForward()
     {
@@ -117,9 +130,13 @@ public bool inClass;
         {
             mentalHealth -= 15;
             timeOfDay += 1;
+        }else if (timeTransition == true && randomScenarioEvent == true)
+        {
+            timeOfDay = 0;
+            timeTransition = false;
         }else if (timeTransition == true)
         {
-            timeOfDay += 1;
+            timeOfDay +=1;
             timeTransition = false;
         }
         whichbutton = 0;
