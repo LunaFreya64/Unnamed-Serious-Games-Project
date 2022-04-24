@@ -28,7 +28,6 @@ public class Button1Script : MonoBehaviour
         if (thisButtonNumber == 4)
         {
             GameManager.MoveTimeForward();
-            GameManager.randomInClassScenario = Random.Range(0,2);
         }else
         {
             GameManager.whichbutton = thisButtonNumber;   

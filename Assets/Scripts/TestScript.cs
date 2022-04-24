@@ -17,6 +17,7 @@ public bool thirdchoice = true;
 public bool timeTransition = false;
 public bool inClass;
 public bool randomScenarioEvent = false;
+public bool setTimeToPresent = false;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public bool randomScenarioEvent = false;
 
         switch (day)
         {
+            //day 1
             case 1:
             switch (timeOfDay)
             {
@@ -76,13 +78,14 @@ public bool randomScenarioEvent = false;
                     tempTimeOfDay = timeOfDay;
                     timeTransition = true;
                     randomScenarioEvent = true;
+                    randomInClassScenario = Random.Range(0,2);
                     break;
                 }
                 thirdchoice = false;
                 break;
 
                 case 4:
-                promptText.text = "oh my god how do I code this?";
+                promptText.text = "I did it!!!";
                 break;
 
             default:
@@ -91,11 +94,30 @@ public bool randomScenarioEvent = false;
                 switch (randomInClassScenario)
                 {
                     case 0:
-                    promptText.text = "inclassscenario1";
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "You try to correct the teacher on what name to call\nyou. You don't think she heard you,\nbut some other kids might've...";
+                        break;
+
+                        case 2:
+                        promptText.text = "You grit your teeth and mutter -here-\nimmediately trying to get your mind onto\nsomething else.";
+                        break;
+
+                        case 3:
+                        promptText.text = "You sit in silence. The teacher repeats your\ndeadname over and over again, before looking at\nyou. -That's you, right? You're [REDACTED]?\nPlease respond when I say your name.";
+                        break;
+
+                        default:
+                        promptText.text = "Your teacher is taking attendance. They call out\nyour deadname, as expected.\n\n1.Attempt to tell the teacher your preferred name.\n2.Just say -here- and try to brush it off.\n3.Don't say anything.";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
                     break;
 
                     case 1:
-                    promptText.text = "inclassscenario2";
+                    promptText.text = "You overhear two kids sitting behind you whispering to themselves.";
                     break;
                     
                     default:
@@ -116,14 +138,28 @@ public bool randomScenarioEvent = false;
 
     public void MoveTimeForward()
     {
-        if (whichbutton == 1 && timeTransition == false)
+        if (whichbutton == 1 && timeTransition == false && setTimeToPresent == true)
+        {
+            riskLevel += 25;
+            mentalHealth += 25;
+            timeOfDay = tempTimeOfDay + 1;
+        }else if (whichbutton == 2 && timeTransition == false && setTimeToPresent == true)
+        {
+            riskLevel -= 25;
+            mentalHealth -= 25;
+            timeOfDay = tempTimeOfDay + 1;
+        }else if (whichbutton == 3 && thirdchoice == true && timeTransition == false && setTimeToPresent == true)
+        {
+            mentalHealth -= 15;
+            timeOfDay = tempTimeOfDay + 1;
+        }else if (whichbutton == 1 && timeTransition == false)
         {
             riskLevel += 25;
             mentalHealth += 25;
             timeOfDay += 1;
         }else if (whichbutton == 2 && timeTransition == false)
         {
-            riskLevel -= 25;
+            riskLevel -=25;
             mentalHealth -= 25;
             timeOfDay += 1;
         }else if (whichbutton == 3 && thirdchoice == true && timeTransition == false)
@@ -138,7 +174,12 @@ public bool randomScenarioEvent = false;
         {
             timeOfDay +=1;
             timeTransition = false;
+        }else if (setTimeToPresent == true)
+        {
+            timeOfDay = tempTimeOfDay+1;
+            setTimeToPresent = false;
         }
+
         whichbutton = 0;
     }
 }
