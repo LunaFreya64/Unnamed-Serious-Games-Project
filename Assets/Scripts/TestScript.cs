@@ -13,6 +13,7 @@ public float mentalHealth;
 public float riskLevel = 0;
 public float whichbutton = 0;
 public float randomInClassScenario;
+public float randomOutClassScenario;
 public bool thirdchoice = true;
 public bool timeTransition = false;
 public bool inClass;
@@ -37,6 +38,7 @@ public bool setTimeToPresent = false;
             switch (timeOfDay)
             {
                 case 1:
+                //do first period prompt
                 switch (whichbutton)
                 {
                     case 1:
@@ -67,10 +69,14 @@ public bool setTimeToPresent = false;
                 {
                     case 1:
                     inClass = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
                     break;
 
                     case 2:
                     inClass = false;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
                     break;
 
                     default:
@@ -79,13 +85,37 @@ public bool setTimeToPresent = false;
                     timeTransition = true;
                     randomScenarioEvent = true;
                     randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
                     break;
                 }
                 thirdchoice = false;
                 break;
 
                 case 4:
-                promptText.text = "I did it!!!";
+                switch (whichbutton)
+                {
+                    case 1:
+                    inClass = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    break;
+
+                    case 2:
+                    inClass = false;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    break;
+
+                    default:
+                    promptText.text = "Next period is your American History class.\n1.Go to class\n2.Skip class";
+                    tempTimeOfDay = timeOfDay;
+                    timeTransition = true;
+                    randomScenarioEvent = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    thirdchoice = false;
+                    break;
+                }
                 break;
 
             default:
@@ -117,11 +147,46 @@ public bool setTimeToPresent = false;
                     break;
 
                     case 1:
-                    promptText.text = "You overhear two kids sitting behind you whispering to themselves.";
+                    promptText.text = "You overhear two kids sitting behind you\nwhispering to themselves.";
                     break;
                     
                     default:
                     promptText.text = "scenarionotrandomizedcorrectly";
+                    break;
+                }
+            }else if (inClass == false)
+            {
+                switch (randomOutClassScenario)
+                {
+                    case 0:
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "You keep walking, but stare at the dress for a better look. The girl is visibly weirded out by your insistent staring.";
+                        break;
+
+                        case 2:
+                        promptText.text = "She's surprisingly unphased, and tells you where she got it from! You spend a little bit of time talking about fashion.";
+                        break;
+
+                        case 3:
+                        promptText.text = "You keep your head down and walk past her. -As if I could ever pull that off- you think.";
+                        break;
+
+                        default:
+                        promptText.text = "You see a girl in the hallway passing by you. She's wearing a really pretty dress with floral stitchings on it, which immediately catches your attention.";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
+                    break;
+
+                    case 1:
+                    promptText.text = "outofclassscenario2";
+                    break;
+
+                    default:
+                    promptText.text = "2scenarionotrandomizedcorrectly";
                     break;
                 }
             }
