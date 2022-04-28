@@ -850,9 +850,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   day: 1
   timeOfDay: 1
+  tempTimeOfDay: 0
   mentalHealth: 0
   riskLevel: 0
   whichbutton: 0
+  randomInClassScenario: 0
+  randomOutClassScenario: 0
+  thirdchoice: 1
+  timeTransition: 0
+  inClass: 0
+  randomScenarioEvent: 0
+  setTimeToPresent: 0
 --- !u!4 &183883745
 Transform:
   m_ObjectHideFlags: 0
