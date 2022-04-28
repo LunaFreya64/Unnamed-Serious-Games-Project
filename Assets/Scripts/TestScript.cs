@@ -19,6 +19,8 @@ public bool timeTransition = false;
 public bool inClass;
 public bool randomScenarioEvent = false;
 public bool setTimeToPresent = false;
+public bool moveForwardDay = false;
+public bool ifHighRisk = false;
 
     void Start()
     {
@@ -30,6 +32,17 @@ public bool setTimeToPresent = false;
     void Update()
     {
         TextMesh promptText = GameObject.Find("Prompt Text").GetComponent<TextMesh>();
+        TextMesh stressText = GameObject.Find("Stress Counter").GetComponent<TextMesh>();
+
+        stressText.text = "Mental Health: " + mentalHealth + "%";
+
+        if (riskLevel >= 50)
+        {
+            ifHighRisk = true;
+        }else
+        {
+            ifHighRisk = false;
+        }
 
         switch (day)
         {
@@ -118,8 +131,73 @@ public bool setTimeToPresent = false;
                 }
                 break;
 
+                case 5:
+                promptText.text = "After Math class is your lunch period.\nYou enter the cafeteria with your food in hand.\nYou see your friends sitting off in the corner.\n\nPress -> to move on";
+                timeTransition = true;
+                break;
+
+                case 6:
+                switch (whichbutton)
+                {
+                    case 1:
+                    inClass = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    break;
+
+                    case 2:
+                    inClass = false;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    break;
+
+                    default:
+                    promptText.text = "Next period is your Biology class.\n1.Go to class\n2.Skip class";
+                    tempTimeOfDay = timeOfDay;
+                    timeTransition = true;
+                    randomScenarioEvent = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    thirdchoice = false;
+                    break;
+                }
+                break;
+
+                case 7:
+                switch (whichbutton)
+                {
+                    case 1:
+                    inClass = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    break;
+
+                    case 2:
+                    inClass = false;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    break;
+
+                    default:
+                    promptText.text = "Last period of the day is Gym class.\n1.Go to class\n2.Skip class";
+                    tempTimeOfDay = timeOfDay;
+                    timeTransition = true;
+                    randomScenarioEvent = true;
+                    randomInClassScenario = Random.Range(0,2);
+                    randomOutClassScenario = Random.Range(0,2);
+                    thirdchoice = false;
+                    break;
+                }
+                break;
+
+                case 8:
+                promptText.text = "You have reached the end of day 1!\nPress -> to see results";
+                setTimeToPresent = false;
+                moveForwardDay = true;
+                break;
+
             default:
-            if (inClass == true)
+            if (inClass == true && ifHighRisk == false)
             {
                 switch (randomInClassScenario)
                 {
@@ -148,13 +226,14 @@ public bool setTimeToPresent = false;
 
                     case 1:
                     promptText.text = "You overhear two kids sitting behind you\nwhispering to themselves.";
+                    setTimeToPresent = true;
                     break;
                     
                     default:
                     promptText.text = "scenarionotrandomizedcorrectly";
                     break;
                 }
-            }else if (inClass == false)
+            }else if (inClass == false && ifHighRisk == false)
             {
                 switch (randomOutClassScenario)
                 {
@@ -162,19 +241,19 @@ public bool setTimeToPresent = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "You keep walking, but stare at the dress for a better look. The girl is visibly weirded out by your insistent staring.";
+                        promptText.text = "You keep walking, but stare at the dress for\na better look. The girl is visibly weirded out by\nyour insistent staring.";
                         break;
 
                         case 2:
-                        promptText.text = "She's surprisingly unphased, and tells you where she got it from! You spend a little bit of time talking about fashion.";
+                        promptText.text = "She's surprisingly unphased, and tells you where\nshe got it from! You spend a little bit of time\ntalking about fashion.";
                         break;
 
                         case 3:
-                        promptText.text = "You keep your head down and walk past her. -As if I could ever pull that off- you think.";
+                        promptText.text = "You keep your head down and walk past her.\n-As if I could ever pull that off- you think.";
                         break;
 
                         default:
-                        promptText.text = "You see a girl in the hallway passing by you. She's wearing a really pretty dress with floral stitchings on it, which immediately catches your attention.";
+                        promptText.text = "You see a girl in the hallway passing by you.\nShe's wearing a really pretty dress with floral\nstitchings on it, which immediately catches your\nattention.\n1.Stare at the dress\n2.Ask about the dress\n3.Ignore her and keep walking";
                         setTimeToPresent = true;
                         thirdchoice = true;
                         break;
@@ -182,21 +261,142 @@ public bool setTimeToPresent = false;
                     break;
 
                     case 1:
-                    promptText.text = "outofclassscenario2";
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "-Oh...I...um...ah...hi.- you acted very awkward.";
+                        break;
+
+                        case 2:
+                        promptText.text = "-I'm sorry. I have to go now.\nMy family is calling me.-";
+                        break;
+
+                        case 3:
+                        promptText.text = "You run away";
+                        break;
+
+                        default:
+                        promptText.text = "You meet someone at school that you think is\nattractive.\n1.Introduce yourself\n2.Make an excuse\n3.Run Away";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
                     break;
 
                     default:
                     promptText.text = "2scenarionotrandomizedcorrectly";
                     break;
                 }
+            }else if (inClass == true && ifHighRisk == true)
+            {
+                switch (randomInClassScenario)
+                {
+                    case 0:
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "decision 1";
+                        break;
+
+                        case 2:
+                        promptText.text = "decision 2";
+                        break;
+
+                        case 3:
+                        promptText.text = "decision 3";
+                        break;
+
+                        default:
+                        promptText.text = "highriskinclass1";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
+                    break;
+
+                    case 1:
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "decision 1";
+                        break;
+
+                        case 2:
+                        promptText.text = "decision 2";
+                        break;
+
+                        case 3:
+                        promptText.text = "decision 3";
+                        break;
+
+                        default:
+                        promptText.text = "highriskinclass2";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
+                    break;
+                }
+                break;
+            }else if (inClass == false && ifHighRisk == true)
+            {
+                switch (randomOutClassScenario)
+                {
+                    case 0:
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "decision 1";
+                        break;
+
+                        case 2:
+                        promptText.text = "decision 2";
+                        break;
+
+                        case 3:
+                        promptText.text = "decision 3";
+                        break;
+
+                        default:
+                        promptText.text = "highriskoutclass1";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
+                    break;
+
+                    case 1:
+                    switch (whichbutton)
+                    {
+                        case 1:
+                        promptText.text = "decision 1";
+                        break;
+
+                        case 2:
+                        promptText.text = "decision 2";
+                        break;
+
+                        case 3:
+                        promptText.text = "decision 3";
+                        break;
+
+                        default:
+                        promptText.text = "highriskoutclass2";
+                        setTimeToPresent = true;
+                        thirdchoice = true;
+                        break;
+                    }
+                    break;
+                }
+                break;
             }
             break;
         }
         break;
 
         default:
-            promptText.text = "you somehow got outside time and space";
-            break;
+        promptText.text = "You have reached the end of day 1\nand also the end of the game as of now!";
+        break;
         }
     }
 
@@ -235,6 +435,7 @@ public bool setTimeToPresent = false;
         {
             timeOfDay = 0;
             timeTransition = false;
+            randomScenarioEvent = false;
         }else if (timeTransition == true)
         {
             timeOfDay +=1;
@@ -243,6 +444,10 @@ public bool setTimeToPresent = false;
         {
             timeOfDay = tempTimeOfDay+1;
             setTimeToPresent = false;
+        }else if (moveForwardDay == true)
+        {
+            day += 1;
+            moveForwardDay = false;
         }
 
         whichbutton = 0;
