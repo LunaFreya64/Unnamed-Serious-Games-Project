@@ -6,11 +6,11 @@ public class WelcomeScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public float prevOrNext = 0;
-    private AudioSource source;
-    void Start()
+
+        void Start()
     {
         TextMesh welcomePromt = GameObject.Find("Welcome Text").GetComponent<TextMesh>();
-        source = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -36,6 +36,6 @@ public class WelcomeScript : MonoBehaviour
             welcomePromt.text = "end of text";
             break;
         }
-        source.Play();
+        
     }
 }
