@@ -295,19 +295,19 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "decision 1";
+                        promptText.text = "You raise your hand, telling the teacher";
                         break;
 
                         case 2:
-                        promptText.text = "decision 2";
+                        promptText.text = "You slightly turn your head around to see two\nboys, laughing at you with crumpled up paper in\ntheir hands. The teachers notices all of you, and\nassumes you're passing notes.";
                         break;
 
                         case 3:
-                        promptText.text = "decision 3";
+                        promptText.text = "You try to shut it all out, but another piece\nof paper hits you. This continues for another 5\nminutes, until the teacher finally notices and tells\nthem to stop.";
                         break;
 
                         default:
-                        promptText.text = "highriskinclass1";
+                        promptText.text = "You're trying to focus on the\nlesson at hand when suddenly, you feel a small\nball of paper hit the back of your head, followed\nby snickering coming from the back of the room.\n\n1.Tell the teacher\n2.Turn your head around and look\n3.Ignore it";
                         setTimeToPresent = true;
                         thirdchoice = true;
                         break;
