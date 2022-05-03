@@ -30,7 +30,7 @@ public class WelcomeButtonScript : MonoBehaviour
             }
         } else
         {
-            if (WelcomeWindow.prevOrNext < 3)
+            if (WelcomeWindow.prevOrNext < 2)
             {
                 WelcomeWindow.prevOrNext +=1;
             }

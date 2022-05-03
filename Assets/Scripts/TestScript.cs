@@ -21,6 +21,7 @@ public bool randomScenarioEvent = false;
 public bool setTimeToPresent = false;
 public bool moveForwardDay = false;
 public bool ifHighRisk = false;
+public GameObject thirdButton;
 
     void Start()
     {
@@ -55,15 +56,15 @@ public bool ifHighRisk = false;
                 switch (whichbutton)
                 {
                     case 1:
-                    promptText.text = "You build up the courage to wear something that\nfits you a little more comfortably.\nYou already feel better.\nLet's just hope no one stares...";
+                    promptText.text = "You build up the courage to wear something that\nfits you a little more comfortably.\nYou already feel better.\nLet's just hope no one stares...\n\n+mental health\n+risk";
                     break;
 
                     case 2:
-                    promptText.text = "You slink into some cargo shorts and a\nbutton-up shirt.\nThis is terrible. You feel terrible.\nBut at least it's safe.";
+                    promptText.text = "You slink into some cargo shorts and a\nbutton-up shirt.\nThis is terrible. You feel terrible.\nBut at least it's safe.\n\n-mental health\n-risk";
                     break;
 
                     case 3:
-                    promptText.text = "You slide into the ol' reliable hoodie/sweatpants\ncombo.It's not terrible, but you wish it could be a\nlittle better.";
+                    promptText.text = "You slide into the ol' reliable hoodie/sweatpants\ncombo.It's not terrible, but you wish it could be a\nlittle better.\n\n-mental health";
                     break;
 
                     default:
@@ -101,6 +102,7 @@ public bool ifHighRisk = false;
                     randomOutClassScenario = Random.Range(0,2);
                     break;
                 }
+                thirdButton.SetActive(false);
                 thirdchoice = false;
                 break;
 
@@ -219,6 +221,7 @@ public bool ifHighRisk = false;
                         default:
                         promptText.text = "Your teacher is taking attendance. They call out\nyour deadname, as expected.\n\n1.Attempt to tell the teacher your preferred name.\n2.Just say -here- and try to brush it off.\n3.Don't say anything.";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -241,20 +244,21 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "You keep walking, but stare at the dress for\na better look. The girl is visibly weirded out by\nyour insistent staring.";
-                        break;
-
-                        case 2:
                         promptText.text = "She's surprisingly unphased, and tells you where\nshe got it from! You spend a little bit of time\ntalking about fashion.";
                         break;
 
-                        case 3:
+                        case 2:
                         promptText.text = "You keep your head down and walk past her.\n-As if I could ever pull that off- you think.";
+                        break;
+
+                        case 3:
+                        promptText.text = "You keep walking, but stare at the dress for\na better look. The girl is visibly weirded out by\nyour insistent staring.";
                         break;
 
                         default:
                         promptText.text = "You see a girl in the hallway passing by you.\nShe's wearing a really pretty dress with floral\nstitchings on it, which immediately catches your\nattention.\n1.Stare at the dress\n2.Ask about the dress\n3.Ignore her and keep walking";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -278,6 +282,7 @@ public bool ifHighRisk = false;
                         default:
                         promptText.text = "You meet someone at school that you think is\nattractive.\n1.Introduce yourself\n2.Make an excuse\n3.Run Away";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -309,6 +314,7 @@ public bool ifHighRisk = false;
                         default:
                         promptText.text = "You're trying to focus on the\nlesson at hand when suddenly, you feel a small\nball of paper hit the back of your head, followed\nby snickering coming from the back of the room.\n\n1.Tell the teacher\n2.Turn your head around and look\n3.Ignore it";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -332,6 +338,7 @@ public bool ifHighRisk = false;
                         default:
                         promptText.text = "highriskinclass2";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -360,6 +367,7 @@ public bool ifHighRisk = false;
                         default:
                         promptText.text = "highriskoutclass1";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -383,6 +391,7 @@ public bool ifHighRisk = false;
                         default:
                         promptText.text = "highriskoutclass2";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
