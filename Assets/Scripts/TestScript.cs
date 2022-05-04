@@ -21,6 +21,8 @@ public bool randomScenarioEvent = false;
 public bool setTimeToPresent = false;
 public bool moveForwardDay = false;
 public bool ifHighRisk = false;
+public GameObject thirdButton;
+public GameObject confirmButton;
 
     void Start()
     {
@@ -55,15 +57,15 @@ public bool ifHighRisk = false;
                 switch (whichbutton)
                 {
                     case 1:
-                    promptText.text = "You build up the courage to wear something that\nfits you a little more comfortably.\nYou already feel better.\nLet's just hope no one stares...";
+                    promptText.text = "You build up the courage to wear something that\nfits you a little more comfortably.\nYou already feel better.\nLet's just hope no one stares...\n\n+mental health\n+risk";
                     break;
 
                     case 2:
-                    promptText.text = "You slink into some cargo shorts and a\nbutton-up shirt.\nThis is terrible. You feel terrible.\nBut at least it's safe.";
+                    promptText.text = "You slink into some cargo shorts and a\nbutton-up shirt.\nThis is terrible. You feel terrible.\nBut at least it's safe.\n\n-mental health\n-risk";
                     break;
 
                     case 3:
-                    promptText.text = "You slide into the ol' reliable hoodie/sweatpants\ncombo.It's not terrible, but you wish it could be a\nlittle better.";
+                    promptText.text = "You slide into the ol' reliable hoodie/sweatpants\ncombo.It's not terrible, but you wish it could be a\nlittle better.\n\n-mental health";
                     break;
 
                     default:
@@ -101,6 +103,7 @@ public bool ifHighRisk = false;
                     randomOutClassScenario = Random.Range(0,2);
                     break;
                 }
+                thirdButton.SetActive(false);
                 thirdchoice = false;
                 break;
 
@@ -205,20 +208,21 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "You try to correct the teacher on what name to call\nyou. You don't think she heard you,\nbut some other kids might've...";
+                        promptText.text = "You try to correct the teacher on what name to call\nyou. You don't think she heard you,\nbut some other kids might've...\n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "You grit your teeth and mutter -here-\nimmediately trying to get your mind onto\nsomething else.";
+                        promptText.text = "You grit your teeth and mutter -here-\nimmediately trying to get your mind onto\nsomething else.\n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "You sit in silence. The teacher repeats your\ndeadname over and over again, before looking at\nyou. -That's you, right? You're [REDACTED]?\nPlease respond when I say your name.";
+                        promptText.text = "You sit in silence. The teacher repeats your\ndeadname over and over again, before looking at\nyou. -That's you, right? You're [REDACTED]?\nPlease respond when I say your name.\n\n-mental health";
                         break;
 
                         default:
                         promptText.text = "Your teacher is taking attendance. They call out\nyour deadname, as expected.\n\n1.Attempt to tell the teacher your preferred name.\n2.Just say -here- and try to brush it off.\n3.Don't say anything.";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -241,20 +245,21 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "You keep walking, but stare at the dress for\na better look. The girl is visibly weirded out by\nyour insistent staring.";
+                        promptText.text = "She's surprisingly unphased, and tells you where\nshe got it from! You spend a little bit of time\ntalking about fashion.\n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "She's surprisingly unphased, and tells you where\nshe got it from! You spend a little bit of time\ntalking about fashion.";
+                        promptText.text = "You keep your head down and walk past her.\n-As if I could ever pull that off- you think.\n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "You keep your head down and walk past her.\n-As if I could ever pull that off- you think.";
+                        promptText.text = "You keep walking, but stare at the dress for\na better look. The girl is visibly weirded out by\nyour insistent staring.\n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "You see a girl in the hallway passing by you.\nShe's wearing a really pretty dress with floral\nstitchings on it, which immediately catches your\nattention.\n1.Stare at the dress\n2.Ask about the dress\n3.Ignore her and keep walking";
+                        promptText.text = "You see a girl in the hallway passing by you.\nShe's wearing a really pretty dress with floral\nstitchings on it, which immediately catches your\nattention.\n1.Ask about the dress.\n2.Ignore her and keep walking.\n3.Stare at the dress.";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -264,20 +269,21 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "-Oh...I...um...ah...hi.- you acted very awkward.";
+                        promptText.text = "You join their circle, and try to hop in on the conversation. \nIt isn’t terrible, and you actually feel like you might be making some new friends! \nBut more friends means more eyes on you… \n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "-I'm sorry. I have to go now.\nMy family is calling me.-";
+                        promptText.text = "You join their circle, but don’t exactly make yourself known. \nIn a sense, you’ve blended in with them, albeit not in the way that you would hope. \n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "You run away";
+                        promptText.text = "They can’t say anything bad if you don’t give them the chance! \n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "You meet someone at school that you think is\nattractive.\n1.Introduce yourself\n2.Make an excuse\n3.Run Away";
+                        promptText.text = "From a distance, you see a group of people that you kind of know. \nOne of them waves at you to come join them. \nThey’re all talking and laughing amongst themselves. Why?";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -295,20 +301,21 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "decision 1";
+                        promptText.text = "You raise your hand, telling the teacher\n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "decision 2";
+                        promptText.text = "You slightly turn your head around to see two\nboys, laughing at you with crumpled up paper in\ntheir hands. The teachers notices all of you, and\nassumes you're passing notes.\n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "decision 3";
+                        promptText.text = "You try to shut it all out, but another piece\nof paper hits you. This continues for another 5\nminutes, until the teacher finally notices and tells\nthem to stop.\n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "highriskinclass1";
+                        promptText.text = "You're trying to focus on the\nlesson at hand when suddenly, you feel a small\nball of paper hit the back of your head, followed\nby snickering coming from the back of the room.\n\n1.Tell the teacher\n2.Turn your head around and look\n3.Ignore it";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -318,20 +325,21 @@ public bool ifHighRisk = false;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "decision 1";
+                        promptText.text = "You stammer over your words, trying to express\nhow you've been feeling, and your identity. She\ndoesn't seem to understand at all, and seems\neven more concerned. But at least being heard\nfelt kinda nice.\n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "decision 2";
+                        promptText.text = "You lie through your teeth, making an excuse like...\n-Oh, my hamster died the other day...- She offers\nher condolences and moves on her way.\n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "decision 3";
+                        promptText.text = "You make an excuse to get out of the situation\n-My phone is going off! Someone's calling! Uh,\ngotta go!\n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "highriskinclass2";
+                        promptText.text = "Your class reaches an end, however the teacher\nasks you to stay behind for a second. After\neveryone leaves, she approaches you:-You haven't\nbeen paying attention at all,\nand I've noticed that you've been...acting weird.\nWhat's going on?\n\n1.Try to explain to her.\n2.Lie about what's wrong.\n3.Make an excuse to leave.";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -358,8 +366,9 @@ public bool ifHighRisk = false;
                         break;
 
                         default:
-                        promptText.text = "highriskoutclass1";
+                        promptText.text = "You catch a few faculty members glancing at you. Is it how you're dressed? How you're walking? Why're they so insisten?";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -381,8 +390,9 @@ public bool ifHighRisk = false;
                         break;
 
                         default:
-                        promptText.text = "highriskoutclass2";
+                        promptText.text = "A faculty member comes over to you. -Shouldn't you be in class right now?";
                         setTimeToPresent = true;
+                        thirdButton.SetActive(true);
                         thirdchoice = true;
                         break;
                     }
@@ -395,7 +405,18 @@ public bool ifHighRisk = false;
         break;
 
         default:
-        promptText.text = "You have reached the end of day 1\nand also the end of the game as of now!";
+        confirmButton.SetActive(false);
+
+        if (mentalHealth >= 85)
+        {
+            promptText.text = "You come back home in a good mood-You wish it would stay like this forever.";;
+        }else if (mentalHealth >= 50)
+        {
+            promptText.text = "Neutral ending";
+        }else
+        {
+            promptText.text = "You come back home and immediately lock yourself\nin your room,\nbreaking down into a mess of tears, and a\npressing feeling of dread on your chest.\nThis overwhelming feeling of dysphoria is\nmiserable-You would give anything to escape it.";
+        }
         break;
         }
     }
