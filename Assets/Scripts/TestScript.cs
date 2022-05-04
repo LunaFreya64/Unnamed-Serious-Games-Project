@@ -269,19 +269,19 @@ public GameObject confirmButton;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "-Oh...I...um...ah...hi.- you acted very awkward.";
+                        promptText.text = "You join their circle, and try to hop in on the conversation. \nIt isn’t terrible, and you actually feel like you might be making some new friends! \nBut more friends means more eyes on you… \n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "-I'm sorry. I have to go now.\nMy family is calling me.-";
+                        promptText.text = "You join their circle, but don’t exactly make yourself known. \nIn a sense, you’ve blended in with them, albeit not in the way that you would hope. \n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "You run away";
+                        promptText.text = "They can’t say anything bad if you don’t give them the chance! \n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "You meet someone at school that you think is\nattractive.\n1.Introduce yourself\n2.Make an excuse\n3.Run Away";
+                        promptText.text = "From a distance, you see a group of people that you kind of know. \nOne of them waves at you to come join them. \nThey’re all talking and laughing amongst themselves. Why?";
                         setTimeToPresent = true;
                         thirdButton.SetActive(true);
                         thirdchoice = true;
