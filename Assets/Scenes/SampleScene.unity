@@ -864,6 +864,7 @@ MonoBehaviour:
   moveForwardDay: 0
   ifHighRisk: 0
   thirdButton: {fileID: 625370202}
+  confirmButton: {fileID: 983115884}
 --- !u!4 &183883745
 Transform:
   m_ObjectHideFlags: 0
