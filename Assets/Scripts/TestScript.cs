@@ -6,8 +6,6 @@ public class TestScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //test
-
 public float day;
 public float timeOfDay;
 public float tempTimeOfDay;
