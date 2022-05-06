@@ -6,6 +6,8 @@ public class TestScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    //test
+
 public float day;
 public float timeOfDay;
 public float tempTimeOfDay;
@@ -269,19 +271,19 @@ public GameObject confirmButton;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "You join their circle, and try to hop in on the conversation. \nIt isn’t terrible, and you actually feel like you might be making some new friends! \nBut more friends means more eyes on you… \n\n+mental health\n+risk";
+                        promptText.text = "You join their circle, and try to hop in on the conversation. \nIt isnï¿½t terrible, and you actually feel like you might be making some new friends! \nBut more friends means more eyes on youï¿½ \n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "You join their circle, but don’t exactly make yourself known. \nIn a sense, you’ve blended in with them, albeit not in the way that you would hope. \n\n-mental health\n-risk";
+                        promptText.text = "You join their circle, but donï¿½t exactly make yourself known. \nIn a sense, youï¿½ve blended in with them, albeit not in the way that you would hope. \n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "They can’t say anything bad if you don’t give them the chance! \n\n-mental health";
+                        promptText.text = "They canï¿½t say anything bad if you donï¿½t give them the chance! \n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "From a distance, you see a group of people that you kind of know. \nOne of them waves at you to come join them. \nThey’re all talking and laughing amongst themselves. Why?";
+                        promptText.text = "From a distance, you see a group of people that you kind of know. \nOne of them waves at you to come join them. \nTheyï¿½re all talking and laughing amongst themselves. Why?";
                         setTimeToPresent = true;
                         thirdButton.SetActive(true);
                         thirdchoice = true;
