@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour
 {
@@ -23,20 +24,26 @@ public bool moveForwardDay = false;
 public bool ifHighRisk = false;
 public GameObject thirdButton;
 public GameObject confirmButton;
+public Slider mentalHealthSlider;
+public Slider riskSlider;
 
     void Start()
     {
         // Initializing 3D prompt text
         TextMesh promptText = GameObject.Find("Prompt Text").GetComponent<TextMesh>();
+        riskLevel = 0;
+        mentalHealth = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        TextMesh promptText = GameObject.Find("Prompt Text").GetComponent<TextMesh>();
-        TextMesh stressText = GameObject.Find("Stress Counter").GetComponent<TextMesh>();
 
-        stressText.text = "Mental Health: " + mentalHealth + "%";
+
+        TextMesh promptText = GameObject.Find("Prompt Text").GetComponent<TextMesh>();
+
+        mentalHealthSlider.value = mentalHealth;
+        riskSlider.value = riskLevel;
 
         if (riskLevel >= 50)
         {
@@ -269,19 +276,19 @@ public GameObject confirmButton;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "You join their circle, and try to hop in on the conversation. \nIt isn�t terrible, and you actually feel like you might be making some new friends! \nBut more friends means more eyes on you� \n\n+mental health\n+risk";
+                        promptText.text = "You join their circle, and try to hop in on the\nconversation. It isn't terrible, and you actually\nfeel like you might be making some new friends! \nBut more friends means more eyes on you. \n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "You join their circle, but don�t exactly make yourself known. \nIn a sense, you�ve blended in with them, albeit not in the way that you would hope. \n\n-mental health\n-risk";
+                        promptText.text = "You join their circle, but don't exactly make\nyourself known. In a sense, you've blended in\nwith them, albeit not in the way that you would\nhope. \n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "They can�t say anything bad if you don�t give them the chance! \n\n-mental health";
+                        promptText.text = "They can't say anything bad if you don't give\nthem the chance! \n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "From a distance, you see a group of people that you kind of know. \nOne of them waves at you to come join them. \nThey�re all talking and laughing amongst themselves. Why?";
+                        promptText.text = "From a distance, you see a group of people that\nyou kind of know. One of them waves at you to\ncome join them. They're all talking and laughing\namongst themselves. Why?\n\n1.Join in\n2.Join in but do not say anything\n3.Ignore it";
                         setTimeToPresent = true;
                         thirdButton.SetActive(true);
                         thirdchoice = true;
@@ -354,19 +361,19 @@ public GameObject confirmButton;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "decision 1";
+                        promptText.text = "Walk by them quickly, out of sight.\n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "decision 2";
+                        promptText.text = "Turn and walk in the opposite direction.\n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "decision 3";
+                        promptText.text = "Hide in a nearby restroom or behind a wall.\n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "You catch a few faculty members glancing at you. Is it how you're dressed? How you're walking? Why're they so insisten?";
+                        promptText.text = "You catch a few faculty members glancing at you.\nIs it how you're dressed? How you're walking?\nWhy're they so insistent?\n\n1.Walk past them\n2.Walk in the opposite direction\n3.Hide";
                         setTimeToPresent = true;
                         thirdButton.SetActive(true);
                         thirdchoice = true;
@@ -378,19 +385,19 @@ public GameObject confirmButton;
                     switch (whichbutton)
                     {
                         case 1:
-                        promptText.text = "decision 1";
+                        promptText.text = "Tell them you skipped class\n\n+mental health\n+risk";
                         break;
 
                         case 2:
-                        promptText.text = "decision 2";
+                        promptText.text = "Say you're on your way to an office\n\n-mental health\n-risk";
                         break;
 
                         case 3:
-                        promptText.text = "decision 3";
+                        promptText.text = "Say nothing\n\n-mental health";
                         break;
 
                         default:
-                        promptText.text = "A faculty member comes over to you. -Shouldn't you be in class right now?";
+                        promptText.text = "A faculty member comes over to you. -Shouldn't you be in class right now?\n\n1.Say you skipped class\n2.Say you are going somewhere\n3.Say nothing";
                         setTimeToPresent = true;
                         thirdButton.SetActive(true);
                         thirdchoice = true;
@@ -409,10 +416,10 @@ public GameObject confirmButton;
 
         if (mentalHealth >= 85)
         {
-            promptText.text = "You come back home in a good mood-You wish it would stay like this forever.";;
+            promptText.text = "You come back home in a good mood\n-You wish it would stay like this forever.";;
         }else if (mentalHealth >= 50)
         {
-            promptText.text = "Neutral ending";
+            promptText.text = "You come back home, feeling pretty decent overall.\nThings aren't great, but they also aren't miserable.\nIt's just another uneventful day, but at least\nyou got through it.";
         }else
         {
             promptText.text = "You come back home and immediately lock yourself\nin your room,\nbreaking down into a mess of tears, and a\npressing feeling of dread on your chest.\nThis overwhelming feeling of dysphoria is\nmiserable-You would give anything to escape it.";
